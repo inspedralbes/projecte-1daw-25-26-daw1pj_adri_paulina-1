@@ -1,16 +1,25 @@
-# transversals
-Esquema mínim de carpetes pels projectes transversals
+# PROJECTE FINAL DAW1PJ2
 
-És obligatori seguir aquesta estructura tot i que la podeu ampliar.
+## APLICACIÓ DE GESTIÓ D'INCIDÈNCIES INFORMÀTIQUES
+La finalitat d'aquest projecte és la de crear una aplicació on el professorat de l'institut pugui **comunicar incidències** al equip tècnic, i aquest pugui **gestionar-les amb facilitat**.
 
-## Atenció
-Un cop comenceu heu de canviar aquesta explicació amb la corresponent al vostre projecte (utilitzant markdown)
+### INTEGRANTS
+- Adrián Tomás Diez
+- Paulina Barrera Limones
 
-# Aquest fitxer ha de contenir com a mínim:
- * Nom dels integrants
- * Nom del projecte
- * Petita descripció
- * Adreça del gestor de tasques (taiga, jira, trello...)
- * Adreça del prototip gràfic del projecte (Penpot, figma, moqups...)
+## INFORMACIÓ ADDICIONAL
+#### GESTOR DE TASQUES
+Per gestionar els sprints i repartir les tasques, utilitzarem [Taiga](https://tree.taiga.io/project/a25adrtomdie-daw1pj2/timeline).
+#### PROTOTIP GRÀFIC
+
+<details>
+<summary>Aquest es <strong>l'esquema de pantalles</strong> que farem servir per crear l'aplicació</summary>
+  
+  ![Esquema de pantalles del projecte](doc/esquemaPantallas.jpg)
+</details>
+
+## ESTAT DEL PROJECTE
+A dia 24 d'abril, ens trobem acabant l'sprint 0, això vol dir que hem terminat la preparació del projecte i ja podem començar a treballar en l'aplicació.
+
+# Falta per afegir al readme:
  * URL de producció (quan la tingueu)
- * Estat: (explicació d'en quin punt està)
