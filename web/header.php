@@ -13,13 +13,14 @@
         <div class="bg-secondary bg-gradient">
             <div class="row align-items">
             <div class="col-4">
-                <img src="logoGI3P.png" alt="logo" class="img-fluid" style="max-height: 80px">
+                <img src="logoPedralbes.png" alt="logo" class="img-fluid" style="max-height: 80px">
             </div>
             <div class="col-4 text-center">
                 <h2 class="text-light">Aplicació de Gestió d'Incidències</h2>
             </div>
             <div class="col-4 text-end">
-                <h3 class="text-light">Grup 2. Adri & Paulina</h3>
+                <h3 class="text-light fs-5">Grup 2 <br>
+                    Adri & Paulina</h3>
             </div>
         </div>
         </div>
