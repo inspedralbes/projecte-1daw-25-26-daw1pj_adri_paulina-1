@@ -5,7 +5,7 @@
     <p>Tria una de les opcions:</p>
     
     <div class="row gap-2">
-        <button class="btn btn-primary"><a href="userIndex.php" class="text-light">Usuari (professor)</a></button>
+        <button class="btn btn-primary"><a href="CrearIncidUser.php" class="text-light">Usuari (professor)</a></button>
         <button class="btn btn-primary"><a href="tecnic.php" class="text-light">Tècnic</a></button>
         <button class="btn btn-primary"><a href="admin.php" class="text-light">Administrador (root)</a></button>
     </div>
