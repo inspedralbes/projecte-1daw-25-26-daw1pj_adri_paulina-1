@@ -1,6 +1,5 @@
 <?php include_once "header.php";?>
 
-
 <?php
 $mysqli = include_once "conexion.php";
 $resultado = $mysqli->query("SELECT * FROM INCIDENCIA");

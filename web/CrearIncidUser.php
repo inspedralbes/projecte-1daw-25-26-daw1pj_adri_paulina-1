@@ -10,9 +10,9 @@
             </div>
             </div>
             
-            <div class="col-md-6 text-center"> <!-- md: medium -->
+            <div class="col-md-6 text-center" > <!-- md: medium -->
                 <h1 class="fw-bold text-center mb-5" style="margin-top: 60px">Crear incidència</h1>
-                <form action="InsertIncidUser.php" method="POST" class="border border-success rounded" style="width:600px">
+                <form action="InsertIncidUser.php" method="POST" class="border border-success rounded" style="width:600px; background-color: #60c7b6">
                 
                     <div class="p-2">
                         <label class="fs-4 mt-4" for="descripcion">Descripció</label> <br>
