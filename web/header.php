@@ -13,7 +13,7 @@
         <div class="bg-secondary bg-gradient">
             <div class="row align-items">
             <div class="col-4">
-                <img src="logoPedralbes.png" alt="logo" class="img-fluid" style="max-height: 80px">
+                <img src="../img/logoPedralbes.png" alt="logo" class="img-fluid" style="max-height: 80px">
             </div>
             <div class="col-4 text-center">
                 <h2 class="text-light">Aplicació de Gestió d'Incidències</h2>
