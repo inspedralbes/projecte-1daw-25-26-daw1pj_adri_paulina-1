@@ -20,14 +20,14 @@ $incidencies = $resultado->fetch_all(MYSQLI_ASSOC);
     <tbody>
         <?php
             foreach ($incidencies as $INCIDENCIA) { ?>
-            <tr>
-                <td><?php echo $INCIDENCIA["idIncidencia"]?></td>
-                <td><?php echo $INCIDENCIA["descripcio"]?></td>
-                <td><?php echo $INCIDENCIA["data"]?></td>
-                <td><?php echo $INCIDENCIA["departament"]?></td>
-                <td><?php echo $INCIDENCIA["dataFinalitzacio"]?></td>
-                <td><?php echo $INCIDENCIA["tipo"]?></td>
-            </tr>           
+            <tr> <!--Evita XSS quan es fa echo de la BD en cas que es guardi una "comanda" maliciosa-->
+                <td><?php echo htmlspecialchars($INCIDENCIA["idIncidencia"])?></td>
+                <td><?php echo htmlspecialchars($INCIDENCIA["descripcio"])?></td>
+                <td><?php echo htmlspecialchars($INCIDENCIA["data"])?></td>
+                <td><?php echo htmlspecialchars($INCIDENCIA["departament"])?></td>
+                <td><?php echo htmlspecialchars($INCIDENCIA["dataFinalitzacio"])?></td>
+                <td><?php echo htmlspecialchars($INCIDENCIA["tipo"])?></td>
+            </tr>
         <?php } ?>
     </tbody>
 </table>

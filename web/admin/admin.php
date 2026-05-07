@@ -24,18 +24,18 @@ $incidencies = $resultado->fetch_all(MYSQLI_ASSOC);
     <tbody>
         <?php
             foreach ($incidencies as $INCIDENCIA) { ?>
-            <tr>
-                <td><?php echo $INCIDENCIA["idIncidencia"]?></td>
-                <td><?php echo $INCIDENCIA["descripcio"]?></td>
-                <td><?php echo $INCIDENCIA["data"]?></td>
-                <td><?php echo $INCIDENCIA["departament"]?></td>
+            <tr> <!--Exita inyeccions XSS mitjançant htmlspecialchars()-->
+                <td><?php echo htmlspecialchars($INCIDENCIA["idIncidencia"])?></td>
+                <td><?php echo htmlspecialchars($INCIDENCIA["descripcio"])?></td>
+                <td><?php echo htmlspecialchars($INCIDENCIA["data"])?></td>
+                <td><?php echo htmlspecialchars($INCIDENCIA["departament"])?></td>
 <!--Fem un JOIN LEFT per obtenir només el nom del tècnic i mostar-ho, en comptes del seu ID-->
-                <td><?php echo $INCIDENCIA["tecnic"]?></td>
-                <td><?php echo $INCIDENCIA["dataFinalitzacio"]?></td>
-                <td><?php echo $INCIDENCIA["tipo"]?></td>
-                <td><?php echo $INCIDENCIA["prioritat"]?></td>
+                <td><?php echo htmlspecialchars($INCIDENCIA["tecnic"])?></td>
+                <td><?php echo htmlspecialchars($INCIDENCIA["dataFinalitzacio"])?></td>
+                <td><?php echo htmlspecialchars($INCIDENCIA["tipo"])?></td>
+                <td><?php echo htmlspecialchars($INCIDENCIA["prioritat"])?></td>
                 <td>
-                    <a href="EditarAdmin.php?id=<?php echo $INCIDENCIA["idIncidencia"] ?>">EDITAR</a>
+                    <a href="EditarAdmin.php?id=<?php echo htmlspecialchars($INCIDENCIA["idIncidencia"])?>">EDITAR</a>
                 </td>
             </tr>
         <?php } ?>

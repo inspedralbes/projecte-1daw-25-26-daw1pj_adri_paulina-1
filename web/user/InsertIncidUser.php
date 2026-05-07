@@ -10,6 +10,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $sentencia = $mysqli -> prepare("INSERT INTO INCIDENCIA (descripcio, data, departament)
     VALUES (?,?,?)"
     );
+    // prepare() & bind_param() preveuen SQL injections
     $sentencia -> bind_param("ssi", $desc, $fecha, $dept);
             /*data type we wanna introduce: string, date, int */
     $sentencia -> execute();

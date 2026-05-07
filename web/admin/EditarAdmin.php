@@ -4,7 +4,7 @@
     $mysqli = include_once "../conexion.php";
     $id = $_GET["id"];
     $sentencia = $mysqli -> prepare("SELECT * FROM INCIDENCIA WHERE idIncidencia = ?");
-    $sentencia -> bind_param("i", $id);
+    $sentencia -> bind_param("i", $id); #Evitar inyeccions XSS amb prepare() & bind_param()
     $sentencia -> execute();
     $resultado = $sentencia -> get_result();
 
@@ -17,10 +17,10 @@
 
 <h1>Actualitzar incidència:</h1>
 <form action="UpdateAdmin.php" method="POST">
-    <input type="hidden" name="idIncidencia" value="<?php echo $incidencia["idIncidencia"]; ?>">
+    <input type="hidden" name="idIncidencia" value="<?php echo htmlspecialchars($incidencia["idIncidencia"]); ?>">
 
     <label for="prioritat">Prioritat:</label>
-    <select name="prioritat" id="prioritat">
+    <select name="prioritat" id="prioritat"> <!--El echo solo imprime el txt slected, nada de la BD-->
         <option value="Alta" <?php if($incidencia["prioritat"] == "Alta") echo "selected"; ?>>Alta</option>
         <option value="Mitja" <?php if($incidencia["prioritat"] == "Mitja") echo "selected"; ?>>Mitja</option>
         <option value="Baixa" <?php if($incidencia["prioritat"] == "Baixa") echo "selected"; ?>>Baixa</option>
@@ -34,7 +34,7 @@
         <option value="Corrent" <?php if($incidencia["tipo"] == "Corrent") echo "selected"; ?>>Corrent</option>
     </select>
     <label for="tecnic">Assignar técnic:</label>
-    <input type="number" name="tecnic" id="tecnic" value="<?php echo $incidencia["tecnic"]; ?>" placeholder="Técnic">
+    <input type="number" name="tecnic" id="tecnic" value="<?php echo htmlspecialchars($incidencia["tecnic"]); ?>" placeholder="Técnic">
 
     <button class="btn btn-success btn-index">DESA</button>
 
