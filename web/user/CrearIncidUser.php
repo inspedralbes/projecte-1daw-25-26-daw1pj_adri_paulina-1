@@ -1,12 +1,10 @@
 <?php include_once "../header.php"; ?>
 
-<link rel="stylesheet" href="../css/responsive.css">
-
     <div class="container mt-5"> <!--con Margin Top: 5-->
-        <div class="row justify-content-center align-items-center"> <!-- -->
-            <div class="col-md-5 align-items-start"> <!--  ¿? -->
-                <img src="../img/formularis-incidencies.jpg" alt="img Incidencies" style="max-width:400px" class="img-fluid rounded shadow"> <!-- fluid per moure l'imatge-->
-                <div class="d-grid gap-2 d-md-flex justify-content-md-center" style="margin-top: 100px">
+        <div class="row justify-content-center align-items-center g-4"> <!-- -->
+            <div class="col-md-5 text-center"> <!-- centrar img + txt -->
+                <img src="../img/formularis-incidencies.jpg" alt="imatge d'un formulari d'incidències" class="img-fluid rounded shadow mb-4" style="max-width:400px"> <!-- fluid per moure l'imatge-->
+                <div class="d-flex gap-2 justify-content-center mt-3" style="margin-top: 100px">
                     <a href="../index.php" class="btn rounded text-white btn-index" style="background-color:#129987">INICI</a>
                     <a href="userList.php" class="btn rounded text-white btn-index" style="background-color:#129987">LLISTAR INCIDÈNCIES</a>
             </div>
@@ -19,14 +17,10 @@
                     <div class="p-2">
                         <label class="fs-4 mt-4" for="descripcion">Descripció</label> <br>
                         <textarea name="descripcion" id="descripcion" placeholder="Descriu la incidència ..." cols="40" rows="10" required></textarea>
-                    </div>
-                    <div class="p-2">
-                        <label class="fs-4" for="data">Data de la incidència</label>
-                        <input type="date" name="data" required>
-                    </div>    
+                    </div>  
                     <div class="p-2"> <!--el for busca al id del input-->
                         <label class="fs-4" for="departament">Departament</label>
-                        <select name="departament" id="department">
+                        <select name="departament" id="departament">
                             <option value="1">Informàtica</option>
                             <option value="2">Català</option>
                             <option value="3">Matemàtiques</option>
