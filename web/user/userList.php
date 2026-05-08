@@ -8,32 +8,34 @@ $departments = [1 => "Informàtica", 2 => "Català", 3 => "Matemàtiques", 4 => 
 ?>
 
 <div class="table-responsive">
-    <table class="table">
-        <thead>
-            <legend>Llista d'incidències completa</legend>
-            <tr>
-                <th>ID</th>
-                <th>Descripcio</th>
-                <th>Data Creació</th>
-                <th>Departament</th>
-                <th>Data Finalitzacio</th>
-                <th>Tipus</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-                foreach ($incidencies as $INCIDENCIA) { ?>
-                <tr> <!--Evita XSS quan es fa echo de la BD en cas que es guardi una "comanda" maliciosa-->
-                    <td><?php echo htmlspecialchars($INCIDENCIA["idIncidencia"])?></td>
-                    <td><?php echo htmlspecialchars($INCIDENCIA["descripcio"])?></td>
-                    <td><?php echo htmlspecialchars($INCIDENCIA["data"]?? '')?></td>
-                    <td><?php echo htmlspecialchars($departments[$INCIDENCIA["departament"]])?></td>
-                    <td><?php echo htmlspecialchars($INCIDENCIA["dataFinalitzacio"]?? '')?></td>
-                    <td><?php echo htmlspecialchars($INCIDENCIA["tipo"]?? '') ?></td> <!-- No pot tenir valors NULL: afeguim ?? '' -->
+    <div class="container">
+        <table class="table">
+            <thead>
+                <legend>Llista d'incidències completa</legend>
+                <tr>
+                    <th>ID</th>
+                    <th>Descripcio</th>
+                    <th>Data Creació</th>
+                    <th>Departament</th>
+                    <th>Data Finalitzacio</th>
+                    <th>Tipus</th>
                 </tr>
-            <?php } ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php
+                    foreach ($incidencies as $INCIDENCIA) { ?>
+                    <tr> <!--Evita XSS quan es fa echo de la BD en cas que es guardi una "comanda" maliciosa-->
+                        <td><?php echo htmlspecialchars($INCIDENCIA["idIncidencia"])?></td>
+                        <td><?php echo htmlspecialchars($INCIDENCIA["descripcio"])?></td>
+                        <td><?php echo htmlspecialchars($INCIDENCIA["data"]?? '')?></td>
+                        <td><?php echo htmlspecialchars($departments[$INCIDENCIA["departament"]])?></td>
+                        <td><?php echo htmlspecialchars($INCIDENCIA["dataFinalitzacio"]?? '')?></td>
+                        <td><?php echo htmlspecialchars($INCIDENCIA["tipo"]?? '') ?></td> <!-- No pot tenir valors NULL: afeguim ?? '' -->
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <a href="../index.php" class="btn rounded text-white btn-index" style="background-color:#129987">INICI</a>

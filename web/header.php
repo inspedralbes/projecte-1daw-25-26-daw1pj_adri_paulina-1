@@ -14,8 +14,8 @@
         <div style="#F9F6EE">
             <div class="row align-items">
             <div class="col-4">
-                <img src="../img/logoPedralbes.png" alt="logo" class="img-fluid" style="max-height: 80px">
-            </div>
+                <a href="/index.php"><img src="../img/logoGI3P.png" alt="logo" class="img-fluid" style="max-height: 80px"></a>
+            </div> <!--/: la ruta es desde la raíz-->
             <div class="col-4 text-center">
                 <h2 class="text-dark">Aplicació de Gestió d'Incidències</h2>
             </div>
@@ -25,4 +25,3 @@
         </div>
         </div>
     </header>
-

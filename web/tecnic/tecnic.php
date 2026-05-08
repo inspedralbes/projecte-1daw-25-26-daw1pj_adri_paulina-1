@@ -22,52 +22,55 @@ if (isset($_GET["id"])) {
 
 <link rel="stylesheet" href="../css/responsive.css">
 
-<div>
-    <h2>Escull el teu usuari:</h2>
-    <table border="1" cellpadding="10">
-        <tr>
-            <th>ID</th>
-            <th>Nom</th>
-        </tr>
-        <?php foreach ($v_tecnics as $tecnic): ?>
+<div class="container">
+    <div>
+        <h2>Escull el teu usuari:</h2>
+        <table border="1" cellpadding="10">
             <tr>
-                <td><?php echo htmlspecialchars($tecnic['idTecnic']); ?></td>
-                <td><a href="?id=<?php echo $tecnic['idTecnic']; ?>">
-                    <?php echo htmlspecialchars($tecnic['nom']); ?></a></td>
+                <th>ID</th>
+                <th>Nom</th>
             </tr>
-        <?php endforeach; ?>
-    </table>
-</div>
-
-<?php if(isset($_GET['id'])): ?>
-    <h2>Incidències que s'ha t'han assignat:</h2>
-    <table border="1" cellpadding="10">
-        <tr>
-            <th>ID</th>
-            <th>Descripció</th>
-            <th>Data</th>
-            <th>Data de finalització</th>
-            <th>Tipus</th>
-            <th>Prioritat</th>
-        </tr>
-        <?php if(count($incid_tecnic)>0): ?>
-            <?php foreach ($incid_tecnic as $incidencia): ?>
+            <?php foreach ($v_tecnics as $tecnic): ?>
                 <tr>
-                    <td><?php echo htmlspecialchars($incidencia['idIncidencia']); ?></td>
-                    <td><?php echo htmlspecialchars($incidencia['descripcio']); ?></td>
-                    <td><?php echo htmlspecialchars($incidencia['data']); ?></td>
-                    <td><?php echo htmlspecialchars($incidencia['dataFinalitzacio'] ?? 'No finalitzada'); ?></td>
-                    <td><?php echo htmlspecialchars($incidencia['tipo']); ?></td>
-                    <td><?php echo htmlspecialchars($incidencia['prioritat']); ?></td>
+                    <td><?php echo htmlspecialchars($tecnic['idTecnic']); ?></td>
+                    <td><a href="?id=<?php echo $tecnic['idTecnic']; ?>">
+                        <?php echo htmlspecialchars($tecnic['nom']); ?></a></td>
                 </tr>
             <?php endforeach; ?>
-        <?php else: ?>
+        </table>
+    </div>
+
+    <?php if(isset($_GET['id'])): ?>
+        <h2>Incidències que s'ha t'han assignat:</h2>
+        <table border="1" cellpadding="10">
             <tr>
-                <td colspan="5">Aquest tècnic no té incidències assignades!</td>
+                <th>ID</th>
+                <th>Descripció</th>
+                <th>Data</th>
+                <th>Data de finalització</th>
+                <th>Tipus</th>
+                <th>Prioritat</th>
             </tr>
-        <?php endif; ?>
-    </table>
-<?php endif; ?>
+            <?php if(count($incid_tecnic)>0): ?>
+                <?php foreach ($incid_tecnic as $incidencia): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($incidencia['idIncidencia']); ?></td>
+                        <td><?php echo htmlspecialchars($incidencia['descripcio']); ?></td>
+                        <td><?php echo htmlspecialchars($incidencia['data']); ?></td>
+                        <td><?php echo htmlspecialchars($incidencia['dataFinalitzacio'] ?? 'No finalitzada'); ?></td>
+                        <td><?php echo htmlspecialchars($incidencia['tipo']); ?></td>
+                        <td><?php echo htmlspecialchars($incidencia['prioritat']); ?></td>
+                        <td></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="5">Aquest tècnic no té incidències assignades!</td>
+                </tr>
+            <?php endif; ?>
+        </table>
+    <?php endif; ?>
+</div>
 
 <div>
     <a href="../index.php" class="btn rounded text-white btn-index" style="background-color: #7a1b0c">INICI</a>
