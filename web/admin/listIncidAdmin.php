@@ -4,13 +4,14 @@
 $mysqli = include_once "../conexion.php";
 $resultado = $mysqli->query("SELECT i.*, t.nom AS tecnic 
     FROM INCIDENCIA i LEFT JOIN TECNIC t ON i.tecnic = t.idTecnic 
-    ORDER BY i.data DESC");
+    ORDER BY prioritat ASC");
 $incidencies = $resultado->fetch_all(MYSQLI_ASSOC);  
+$departments = [1 => "Informàtica", 2 => "Català", 3 => "Matemàtiques", 4 => "Secretaria"];
 ?>
 
 <link rel="stylesheet" href="../css/responsive.css">
 
-<table class="table">
+<table class="table table-hover">
     <thead>
         <legend>Llista de totes les incidències:</legend>
         <tr>
@@ -27,14 +28,23 @@ $incidencies = $resultado->fetch_all(MYSQLI_ASSOC);
     <tbody>
         <?php
             foreach ($incidencies as $INCIDENCIA) { ?>
-            <tr> <!--Exita inyeccions XSS mitjançant htmlspecialchars()-->
+            <?php
+                    if ($INCIDENCIA["prioritat"] == "Alta") {
+                        $claseCss = "table-danger";
+                    } elseif ($INCIDENCIA["prioritat"] == "Mitja") {
+                        $claseCss = "table-warning";
+                    } else {
+                        $claseCss = "table-success";;
+                    }
+                ?>
+            <tr class="<?php echo $claseCss; ?>"> <!--Exita inyeccions XSS mitjançant htmlspecialchars()-->
                 <td><?php echo htmlspecialchars($INCIDENCIA["idIncidencia"])?></td>
                 <td><?php echo htmlspecialchars($INCIDENCIA["descripcio"])?></td>
                 <td><?php echo htmlspecialchars($INCIDENCIA["data"])?></td>
-                <td><?php echo htmlspecialchars($INCIDENCIA["departament"])?></td>
+                <td><?php echo htmlspecialchars($departments[$INCIDENCIA["departament"]])?></td>
 <!--Fem un JOIN LEFT per obtenir només el nom del tècnic i mostar-ho, en comptes del seu ID-->
                 <td><?php echo htmlspecialchars($INCIDENCIA["tecnic"])?></td>
-                <td><?php echo htmlspecialchars($INCIDENCIA["dataFinalitzacio"])?></td>
+                <td><?php echo htmlspecialchars($INCIDENCIA["dataFinalitzacio"] ?? 'No finalitzada')?></td>
                 <td><?php echo htmlspecialchars($INCIDENCIA["tipo"])?></td>
                 <td><?php echo htmlspecialchars($INCIDENCIA["prioritat"])?></td>
                 <td>
