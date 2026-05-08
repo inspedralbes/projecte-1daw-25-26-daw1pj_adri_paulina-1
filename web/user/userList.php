@@ -25,11 +25,11 @@ $departments = [1 => "Informàtica", 2 => "Català", 3 => "Matemàtiques", 4 => 
                 foreach ($incidencies as $INCIDENCIA) { ?>
                 <tr> <!--Evita XSS quan es fa echo de la BD en cas que es guardi una "comanda" maliciosa-->
                     <td><?php echo htmlspecialchars($INCIDENCIA["idIncidencia"])?></td>
-                    <td><?php echo htmlspecialchars($INCIDENCIA["descripcio"])?></td>
-                    <td><?php echo htmlspecialchars($INCIDENCIA["data"]?? '')?></td>
+                    <td><?php echo htmlspecialchars($INCIDENCIA["descripcio"] ?? 'Sense descripció')?></td>
+                    <td><?php echo htmlspecialchars($INCIDENCIA["data"])?></td>
                     <td><?php echo htmlspecialchars($departments[$INCIDENCIA["departament"]])?></td>
-                    <td><?php echo htmlspecialchars($INCIDENCIA["dataFinalitzacio"]?? '')?></td>
-                    <td><?php echo htmlspecialchars($INCIDENCIA["tipo"]?? '') ?></td> <!-- No pot tenir valors NULL: afeguim ?? '' -->
+                    <td><?php echo htmlspecialchars($INCIDENCIA["dataFinalitzacio"]?? 'No Finalitzada')?></td>
+                    <td><?php echo htmlspecialchars($INCIDENCIA["tipo"]?? 'No assignat') ?></td> <!-- No pot tenir valors NULL: afeguim ?? '' -->
                 </tr>
             <?php } ?>
         </tbody>
