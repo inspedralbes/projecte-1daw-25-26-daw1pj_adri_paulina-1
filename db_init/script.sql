@@ -36,16 +36,17 @@ CREATE TABLE ACTUACIO(
     -- INCIDENCIAS DE PRUEBA HECHAS POR IA PARA TESTEAR 
     -- 1. Insertar Departamentos
     INSERT INTO DEPARTAMENT (nom) VALUES 
-    ('Info'), 
+    ('Informatica'), 
     ('Catala'), 
-    ('Mates'), 
+    ('Matematiques'), 
     ('Secretaria');
 
     -- 2. Insertar Técnicos
     INSERT INTO TECNIC (nom) VALUES 
-    ('Joan Garcia'), 
-    ('Marta Puig'), 
-    ('Albert Roca');
+    ('Ermengol Bota'), 
+    ('Alvaro Perez'), 
+    ('Gerard Torrents'),
+    ('Rafa Cuestas');
 
     -- 3. Insertar Incidencias
     -- Incidencia 1: Cerrada (con dataFinalitzacio)

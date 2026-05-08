@@ -24,7 +24,8 @@ services:
       MYSQL_PASSWORD: 123456
     volumes:
       - mysql-data:/var/lib/mysql
-      - ./sql:/docker-entrypoint-initdb.d
+      - ./db_init:/docker-entrypoint-initdb.d
+      # L'script sql es guarda en la carpeta db_init
     networks:
       - app-network
 
