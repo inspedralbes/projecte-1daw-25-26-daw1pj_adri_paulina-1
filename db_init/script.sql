@@ -31,6 +31,7 @@ CREATE TABLE ACTUACIO(
     data TIMESTAMP,
     incidencia INT(11),
     visible INT(1),
+    duracio INT(11),
     FOREIGN KEY (incidencia) REFERENCES INCIDENCIA(idIncidencia)
 );
     -- INCIDENCIAS DE PRUEBA HECHAS POR IA PARA TESTEAR 

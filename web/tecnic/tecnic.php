@@ -5,6 +5,7 @@ $misqli = include_once "../conexion.php";
 $return = $misqli -> query("SELECT * FROM TECNIC");
 
 $v_tecnics = $return -> fetch_all(MYSQLI_ASSOC);
+$return -> free(); // liberamos memoria
 
 /*Si selecciona un técnico hace un bucle para mostrar solo sus incidéncias asignadas */
 $incid_tecnic = [];
@@ -17,28 +18,30 @@ if (isset($_GET["id"])) {
 
     $result = $stmt -> get_result();
     $incid_tecnic = $result -> fetch_all(MYSQLI_ASSOC);
+    $stmt -> close(); // cerramos la consulta preparada
     }
 ?>
 
 <link rel="stylesheet" href="../css/responsive.css">
 
 <div class="container">
-    <div>
-        <h2>Escull el teu usuari:</h2>
-        <table border="1" cellpadding="10">
-            <tr>
-                <th>ID</th>
-                <th>Nom</th>
-            </tr>
-            <?php foreach ($v_tecnics as $tecnic): ?>
+
+    <?php if(!isset ($_GET["id"])): ?>
+            <h2>Escull el teu usuari:</h2>
+            <table border="1" cellpadding="10">
                 <tr>
-                    <td><?php echo htmlspecialchars($tecnic['idTecnic']); ?></td>
-                    <td><a href="?id=<?php echo $tecnic['idTecnic']; ?>">
-                        <?php echo htmlspecialchars($tecnic['nom']); ?></a></td>
+                    <th>ID</th>
+                    <th>Nom</th>
                 </tr>
-            <?php endforeach; ?>
-        </table>
-    </div>
+                <?php foreach ($v_tecnics as $tecnic): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($tecnic['idTecnic']); ?></td>
+                        <td><a href="?id=<?php echo $tecnic['idTecnic']; ?>">
+                            <?php echo htmlspecialchars($tecnic['nom']); ?></a></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+    <?php endif; ?>
 
     <?php if(isset($_GET['id'])): ?>
         <h2>Incidències que s'ha t'han assignat:</h2>
@@ -60,20 +63,24 @@ if (isset($_GET["id"])) {
                         <td><?php echo htmlspecialchars($incidencia['dataFinalitzacio'] ?? 'No finalitzada'); ?></td>
                         <td><?php echo htmlspecialchars($incidencia['tipo']); ?></td>
                         <td><?php echo htmlspecialchars($incidencia['prioritat']); ?></td>
-                        <td></td>
                     </tr>
                 <?php endforeach; ?>
             <?php else: ?>
                 <tr>
-                    <td colspan="5">Aquest tècnic no té incidències assignades!</td>
+                    <td colspan="6">Aquest tècnic no té incidències assignades!</td>
                 </tr>
             <?php endif; ?>
         </table>
     <?php endif; ?>
-</div>
 
-<div>
-    <a href="../index.php" class="btn rounded text-white btn-index" style="background-color: #7a1b0c">INICI</a>
+    <div class="d-flex gap-2 mt-3">
+        <a href="../index.php" class="btn rounded text-white btn-index" style="background-color: #7a1b0c">INICI</a>
+        <!--Btn para volver atrás en la misma pàgina -->
+        <?php if(isset($_GET['id'])): ?>
+            <a href="?" class="btn rounded text-white btn-index" style="background-color: #7a1b0c">Tornar enrrere</a>
+        <?php endif; ?>
+            
+    </div>
 </div>
 
 <?php require_once "../footer.php" ?>

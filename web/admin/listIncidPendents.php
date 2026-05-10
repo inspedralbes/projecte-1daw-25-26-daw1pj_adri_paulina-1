@@ -11,49 +11,51 @@ $departments = [1 => "Informàtica", 2 => "Català", 3 => "Matemàtiques", 4 => 
 
 <link rel="stylesheet" href="../css/responsive.css">
 
-<table class="table table-hover">
-    <thead>
-        <legend>Llista de totes les incidències:</legend>
-        <tr>
-            <th>ID</th>
-            <th>Descripcio</th>
-            <th>Data Creació</th>
-            <th>Departament</th>
-            <th>Tècnic</th>
-            <th>Data Finalitzacio</th>
-            <th>Tipus</th>
-            <th>Prioritat</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-            foreach ($incidencies as $INCIDENCIA) { ?>
-            <?php
-                    if ($INCIDENCIA["prioritat"] == "Alta") {
-                        $claseCss = "table-danger";
-                    } elseif ($INCIDENCIA["prioritat"] == "Mitja") {
-                        $claseCss = "table-warning";
-                    } else {
-                        $claseCss = "table-success";;
-                    }
-                ?>
-            <tr class="<?php echo $claseCss; ?>"> <!--Exita inyeccions XSS mitjançant htmlspecialchars()-->
-                <td><?php echo htmlspecialchars($INCIDENCIA["idIncidencia"])?></td>
-                <td><?php echo htmlspecialchars($INCIDENCIA["descripcio"] ?? 'Sense descripció')?></td>
-                <td><?php echo htmlspecialchars($INCIDENCIA["data"])?></td>
-                <td><?php echo htmlspecialchars($departments[$INCIDENCIA["departament"]])?></td>
-<!--Fem un JOIN LEFT per obtenir només el nom del tècnic i mostar-ho, en comptes del seu ID-->
-                <td><?php echo htmlspecialchars($INCIDENCIA["tecnic"] ?? 'No assignat')?></td>
-                <td><?php echo htmlspecialchars($INCIDENCIA["dataFinalitzacio"] ?? 'No finalitzada')?></td>
-                <td><?php echo htmlspecialchars($INCIDENCIA["tipo"] ?? 'No assignat')?></td>
-                <td><?php echo htmlspecialchars($INCIDENCIA["prioritat"] ?? 'No assignada')?></td>
-                <td>
-                    <a href="EditarAdmin.php?id=<?php echo htmlspecialchars($INCIDENCIA["idIncidencia"])?>">EDITAR</a>
-                </td>
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+            <legend>Llista de totes les incidències:</legend>
+            <tr>
+                <th>ID</th>
+                <th>Descripcio</th>
+                <th>Data Creació</th>
+                <th>Departament</th>
+                <th>Tècnic</th>
+                <th>Data Finalitzacio</th>
+                <th>Tipus</th>
+                <th>Prioritat</th>
             </tr>
-        <?php } ?>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <?php
+                foreach ($incidencies as $INCIDENCIA) { ?>
+                <?php
+                        if ($INCIDENCIA["prioritat"] == "Alta") {
+                            $claseCss = "table-danger";
+                        } elseif ($INCIDENCIA["prioritat"] == "Mitja") {
+                            $claseCss = "table-warning";
+                        } else {
+                            $claseCss = "table-success";;
+                        }
+                    ?>
+                <tr class="<?php echo $claseCss; ?>"> <!--Exita inyeccions XSS mitjançant htmlspecialchars()-->
+                    <td><?php echo htmlspecialchars($INCIDENCIA["idIncidencia"])?></td>
+                    <td><?php echo htmlspecialchars($INCIDENCIA["descripcio"] ?? 'Sense descripció')?></td>
+                    <td><?php echo htmlspecialchars($INCIDENCIA["data"]?? 'Falta data')?></td>
+                    <td><?php echo htmlspecialchars($departments[$INCIDENCIA["departament"]])?></td>
+    <!--Fem un JOIN LEFT per obtenir només el nom del tècnic i mostar-ho, en comptes del seu ID-->
+                    <td><?php echo htmlspecialchars($INCIDENCIA["tecnic"] ?? 'No assignat')?></td>
+                    <td><?php echo htmlspecialchars($INCIDENCIA["dataFinalitzacio"] ?? 'No finalitzada')?></td>
+                    <td><?php echo htmlspecialchars($INCIDENCIA["tipo"] ?? 'No assignat')?></td>
+                    <td><?php echo htmlspecialchars($INCIDENCIA["prioritat"] ?? 'No assignada')?></td>
+                    <td>
+                        <a href="EditarAdmin.php?id=<?php echo htmlspecialchars($INCIDENCIA["idIncidencia"])?>">EDITAR</a>
+                    </td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+</div>
 
 <a href="../index.php" class="btn rounded text-white btn-index" style="background-color:#278DE6">INICI</a>
 <a href="admin.php" class="btn rounded text-white btn-index" style="background-color:#278DE6">VOLVER</a>
