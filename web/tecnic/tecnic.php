@@ -1,8 +1,8 @@
 <?php
 require_once "../header.php";
-$misqli = include_once "../conexion.php";
+$mysqli = include_once "../conexion.php";
 # creamos una variable que haga un SELECT a la BD mediante conexion.php
-$return = $misqli -> query("SELECT * FROM TECNIC");
+$return = $mysqli -> query("SELECT * FROM TECNIC");
 
 $v_tecnics = $return -> fetch_all(MYSQLI_ASSOC);
 $return -> free(); // liberamos memoria
@@ -11,7 +11,7 @@ $return -> free(); // liberamos memoria
 $incid_tecnic = [];
 if (isset($_GET["id"])) {
     $id_tecnic = $_GET["id"];
-    $stmt = $misqli -> prepare("SELECT * FROM INCIDENCIA WHERE tecnic = ?");
+    $stmt = $mysqli -> prepare("SELECT * FROM INCIDENCIA WHERE tecnic = ? AND dataFinalitzacio IS NULL");
     
     $stmt -> bind_param("i", $id_tecnic);
     $stmt -> execute();
@@ -20,6 +20,18 @@ if (isset($_GET["id"])) {
     $incid_tecnic = $result -> fetch_all(MYSQLI_ASSOC);
     $stmt -> close(); // cerramos la consulta preparada
     }
+
+if (isset($_GET['action']) && $_GET['action'] == 'tancar' && isset($_GET['id_incidencia'])) {
+    $id_a_tancar = $_GET['id_incidencia'];
+    $stmt_update = $mysqli->prepare("UPDATE INCIDENCIA SET dataFinalitzacio = NOW(), prioritat = NULL WHERE idIncidencia = ?");
+    $stmt_update->bind_param("i", $id_a_tancar);
+    $stmt_update->execute();
+    $stmt_update->close();
+    
+    $id_actual = $_GET['id']; 
+    header("Location: ?id=$id_actual");
+    exit;
+}
 ?>
 
 <link rel="stylesheet" href="../css/responsive.css">
@@ -66,10 +78,15 @@ if (isset($_GET["id"])) {
                         <td><?php echo htmlspecialchars($incidencia['dataFinalitzacio'] ?? 'No finalitzada'); ?></td>
                         <td><?php echo htmlspecialchars($incidencia['tipo']); ?></td>
                         <td><?php echo htmlspecialchars($incidencia['prioritat']); ?></td>
+                        <td><a href="?id=<?php echo $id_tecnic; ?>&action=tancar&id_incidencia=<?php echo $incidencia['idIncidencia']; ?>" 
+                        class="btn btn-sm btn-danger" onclick="return confirm('Segur que vols tancar la incidència <?php echo $incidencia['idIncidencia']; ?>?')">
+                        Tancar
+                        </a></td>
                         <td><a href="llistarActuacions.php?id=<?php echo htmlspecialchars($incidencia["idIncidencia"])?>" 
                         class="btn btn-sm btn-info">Llistat d'actuacions</a></td>
                         <td><a href="actuacioTec.php?id=<?php echo htmlspecialchars($incidencia["idIncidencia"])?>" 
                         class="btn btn-sm btn-danger">Afegir actuació</a></td>
+                        
                     </tr>
                 <?php endforeach; ?>
             <?php else: ?>

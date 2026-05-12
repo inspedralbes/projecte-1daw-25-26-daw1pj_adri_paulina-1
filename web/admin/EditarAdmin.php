@@ -21,20 +21,28 @@
 
     <label for="prioritat">Prioritat:</label>
     <select name="prioritat" id="prioritat"> <!--El echo solo imprime el txt slected, nada de la BD-->
+        <option hidden>--Prioritat--</option>                
         <option value="Alta" <?php if($incidencia["prioritat"] == "Alta") echo "selected"; ?>>Alta</option>
         <option value="Mitja" <?php if($incidencia["prioritat"] == "Mitja") echo "selected"; ?>>Mitja</option>
         <option value="Baixa" <?php if($incidencia["prioritat"] == "Baixa") echo "selected"; ?>>Baixa</option>
     </select>
     
-    <label for="tipo">Tipo:</label>
+    <label for="tipo">Tipus:</label>
     <select name="tipo" id="tipo">
+        <option hidden>--Tipus--</option>        
         <option value="Software" <?php if($incidencia["tipo"] == "Software") echo "selected"; ?>>Software</option>
         <option value="Hardware" <?php if($incidencia["tipo"] == "Hardware") echo "selected"; ?>>Hardware</option>
         <option value="Internet" <?php if($incidencia["tipo"] == "Internet") echo "selected"; ?>>Internet</option>
         <option value="Corrent" <?php if($incidencia["tipo"] == "Corrent") echo "selected"; ?>>Corrent</option>
     </select>
     <label for="tecnic">Assignar técnic:</label>
-    <input type="number" name="tecnic" id="tecnic" value="<?php echo htmlspecialchars($incidencia["tecnic"]); ?>" placeholder="Técnic">
+    <select name="tecnic" id="tecnic" value="<?php echo htmlspecialchars($incidencia["tecnic"]); ?>">
+        <option hidden>--Tècnic--</option>
+        <option value="1">Ermengol Bota</option>
+        <option value="2">Alvaro Perez</option>
+        <option value="3">Gerard Torrents</option>
+        <option value="4">Rafa Cuestas</option>
+    </select>
 
     <button class="btn btn-success btn-index">DESA</button>
 
