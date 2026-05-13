@@ -1,8 +1,13 @@
 {
-    "name" : "grup2/projecte-1daw-25-26-daw1pj2",
-    "autoload" : {},
-    "authors" : [
-        {"name" : "Grup 2"}
+    "name": "inspedralbes/amb-mongodb",
+    "description": "PHP Amb MongoDB",
+
+    "authors": [
+        {
+            "name": "grup2"
+        }
     ],
-    "require" : {"mongodb/mongodb": "^2.1"}
+    "require": {
+        "mongodb/mongodb": "^2.0"
+    }
 }
