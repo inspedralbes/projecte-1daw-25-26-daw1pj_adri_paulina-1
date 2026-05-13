@@ -11,7 +11,7 @@ $return -> free(); // liberamos memoria
 $incid_tecnic = [];
 if (isset($_GET["id"])) {
     $id_tecnic = $_GET["id"];
-    $stmt = $misqli -> prepare("SELECT idIncidencia, descripcio, DATE(data) AS fecha, departament, tecnic, dataFinalitzacio, tipo, prioritat FROM INCIDENCIA WHERE tecnic = ?");
+    $stmt = $mysqli -> prepare("SELECT idIncidencia, descripcio, DATE(data) AS fecha, departament, tecnic, dataFinalitzacio, tipo, prioritat FROM INCIDENCIA WHERE tecnic = ? AND dataFinalitzacio IS NULL");
     
     $stmt -> bind_param("i", $id_tecnic);
     $stmt -> execute();
