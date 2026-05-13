@@ -11,16 +11,16 @@ $departments = [1 => "Informàtica", 2 => "Català", 3 => "Matemàtiques", 4 => 
 
 <div class="table-responsive">
     <div class="container">
-            <table class="table">
-            <thead>
-                <legend>Llista d'incidències completa</legend>
+            <table class="table table-hover">
+            <thead class="thead-dark">
+                <legend class="mt-5">Llista d'incidències completa</legend>
                 <tr>
-                    <th>ID</th>
-                    <th>Descripcio</th>
-                    <th>Data Creació</th>
-                    <th>Departament</th>
-                    <th>Data Finalitzacio</th>
-                    <th>Tipus</th>
+                    <th class="text-white" scope="col">ID</th>
+                    <th class="text-white" scope="col">Descripcio</th>
+                    <th class="text-white" scope="col">Data Creació</th>
+                    <th class="text-white" scope="col">Departament</th>
+                    <th class="text-white" scope="col">Data Finalitzacio</th>
+                    <th class="text-white" scope="col">Tipus</th>
                 </tr>
             </thead>
             <tbody>

@@ -14,32 +14,22 @@ $stmt -> bind_param("i", $id);
 
 $stmt -> execute();
 
-$result -> $stmt -> get_result();
-
-if ($result -> num_rows < 0) {
+$result = $stmt -> get_result();
+/* si no encuentra (= 0) */
+if ($result -> num_rows === 0) {
     echo "No s'ha trobat la incidència";
     exit;
 } 
 
-$incidenica = $result -> fetch_assoc();
+$incidencia = $result -> fetch_assoc();
 ?>
 
-<h1>Incidència <?php echo $incidencia['idIncidencia'] ?></h1>
-
-<ul>
-    <li><strong>Descripció:</strong> <?= $incidencia['descripcio'] ?></li>
-    <li><strong>Data:</strong> <?= $incidencia['data'] ?></li>
-    <li><strong>Departament:</strong> <?= $incidencia['departament'] ?></li>
-    <li><strong>Tècnic:</strong> <?= $incidencia['tecnic'] ?></li>
-    <li><strong>Data finalització:</strong> <?= $incidencia['dataFinalitzacio'] ?></li>
-    <li><strong>Tipus:</strong> <?= $incidencia['tipo'] ?></li>
-    <li><strong>Prioritat:</strong> <?= $incidencia['prioritat'] ?></li>
-</ul>
+<h1>Incidència <?= htmlspecialchars($incidencia['idIncidencia']) ?></h1>
 
 <div class="table-responsive">
     <legend>Detalls de la incidència</legend>
-    <table class="table">
-        <thead>
+    <table class="table table-hover">
+        <thead class="thead-dark">
             <tr>
                 <th>ID</th>
                 <th>Descripció</th>
@@ -50,7 +40,19 @@ $incidenica = $result -> fetch_assoc();
             </tr>
         </thead>
         <tbody>
-            <tr></tr>
+            <tr>
+                <td><?= htmlspecialchars($incidencia['idIncidencia']) ?></td>
+                <td><?= htmlspecialchars($incidencia['descripcio'] ?? 'Sense descripció') ?></td>
+                <td><?= date('d-m-Y', strtotime($incidencia['data'])) ?></td>
+                <td><?= htmlspecialchars($incidencia['nomDept'] ?? 'Desconegut') ?></td>
+                <td><?= htmlspecialchars($incidencia['dataFinalitzacio'] ?? 'No Finalitzada') ?></td>
+                <td><?= htmlspecialchars($incidencia['tipo'] ?? 'No assignat') ?></td>
+            </tr>
         </tbody>
     </table>
+    <div class="container">
+        <a href="../index.php" class="btn btn-primary rounded text-white btn-index">INICI</a>
+        <a href="CrearIncidUser.php" class="btn btn-primary rounded text-white btn-index">TORNAR</a>
+    </div>
 </div>
+

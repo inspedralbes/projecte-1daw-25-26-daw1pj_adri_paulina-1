@@ -13,17 +13,18 @@ $departments = [1 => "Informàtica", 2 => "Català", 3 => "Matemàtiques", 4 => 
 
 <div class="container">
     <table class="table table-hover">
-        <thead>
-            <legend>Llista de totes les incidències:</legend>
+        <thead class="thead-dark">
+            <legend class="mt-5">Llista de totes les incidències:</legend>
             <tr>
-                <th>ID</th>
-                <th>Descripcio</th>
-                <th>Data Creació</th>
-                <th>Departament</th>
-                <th>Tècnic</th>
-                <th>Data Finalitzacio</th>
-                <th>Tipus</th>
-                <th>Prioritat</th>
+                <th class="text-white">ID</th>
+                <th class="text-white">Descripcio</th>
+                <th class="text-white">Data Creació</th>
+                <th class="text-white">Departament</th>
+                <th class="text-white">Tècnic</th>
+                <th class="text-white">Data Finalitzacio</th>
+                <th class="text-white">Tipus</th>
+                <th class="text-white">Prioritat</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>

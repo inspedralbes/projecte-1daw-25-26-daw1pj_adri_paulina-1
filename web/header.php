@@ -1,3 +1,6 @@
+<!-- Només la página activa se li aplica el active -->
+<?php $pagActual = basename($_SERVER['PHP_SELF']); ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -13,24 +16,31 @@
 <body>
 
 <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/index.php"><img src="../img/logoGI3P.svg" alt="logo del projecte de 1er DAW de linstitut" style="height: 50px;"></a>
+  <div class="container-fluid position-relative">
+    <!--Esquerra-->
+    <a class="navbar-brand" href="/index.php">
+      <img src="../img/logoGI3P.svg" alt="logo del projecte de 1er DAW de linstitut" style="height: 50px;">
+    </a>
+    <!--En mig-->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarColor01">
-      <ul class="navbar-nav mx-auto">
+      <!--Per centrar de manera simétrica-->
+      <ul class="navbar-nav nav-center">
         <li class="nav-item">
-          <a class="nav-link active " href="../user/CrearIncidUser.php"><h5>Professors</h5></a>
+          <a class="nav-link <?= $pagActual === 'CrearIncidUser.php' ? 'active' : '' ?>" href="../user/CrearIncidUser.php"><h5>Professors</h5></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../tecnic/tecnic.php"><h5>Tècnics</h5></a>
+          <a class="nav-link <?= $pagActual === 'tecnic.php' ? 'active' : '' ?> " href="../tecnic/tecnic.php"><h5>Tècnics</h5></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../admin/admin.php"><h5>Administrador</h5></a>
+          <a class="nav-link <?= $pagActual === 'admin.php' ? 'active' : '' ?> " href="../admin/admin.php"><h5>Administrador</h3></a>
         </li>
       </ul>
-      <form class="d-flex text-end" action="/buscarIncidencia.php" method="GET">
+      <!--Dreta-->
+      <form class="d-flex ms-auto form-right" action="/buscarIncidencia.php" method="GET">
         <input class="form-control me-sm-2" type="search" size="25" placeholder="Buscar incidència pel seu ID">
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
       </form>

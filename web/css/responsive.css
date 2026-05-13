@@ -5,22 +5,27 @@
     transition: all 0.2s ease;
     color: rgba(0, 0, 0, 0.541) !important; /* evitar conflictos con bootstrap*/
 }
-/*estil video/animació: cambiar video en absolute*/
-#intro .video-alpha{
+video{
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* To resize the video to cover the entire container */
     z-index: 0;
+}
+/*estil video/animació: cambiar video en absolute*/
+.mask-alpha{
     background: linear-gradient(
     45deg,
     rgba(11, 169, 140, 0.7),
     rgba(74, 29, 145, 0.7) 100%);
     display: flex; /*Para poder centrar los items*/
     align-items: center;
+    z-index: 1; /*Para que esté por encima del video*/
 }
+
+
 
 /*--- RESPONSIVE: - Per a mòvils (576px) i tablets (768px) (ordenadors es per defecte) ---*/
 /* -- Header --*/

@@ -16,16 +16,16 @@ if($idIncidencia){
 
 <div class="table-responsive">
     <div class="container">
-            <table class="table">
-            <thead>
-                <legend>Llista d'actuacions completa</legend>
+            <table class="table table-hover">
+            <thead class="thead-dark">
+                <legend class="mt-5">Llista de les teves actuacions</legend>
                 <tr>
-                    <th>ID</th>
-                    <th>Descripcio</th>
-                    <th>Data Creació</th>
-                    <th>Incidència</th>
-                    <th>Visibilitat</th>
-                    <th>Duració (min)</th>
+                    <th class="text-white">ID</th>
+                    <th class="text-white">Descripcio</th>
+                    <th class="text-white">Data Creació</th>
+                    <th class="text-white">Incidència</th>
+                    <th class="text-white">Visibilitat</th>
+                    <th class="text-white">Duració (min)</th>
                 </tr>
             </thead>
             <tbody>

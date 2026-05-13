@@ -11,7 +11,7 @@
             </div>
             
             <div class="col-md-6 text-center" > <!-- md: medium -->
-                <h1 class="fw-bold text-center mb-5" style="margin-top: 30px">Crear incidència</h1> <!--Color anterior del formulario: background-color: #60c7b6-->
+                <h1 class="fw-bold text-center mb-5" style="margin-top: 20px">Crear incidència</h1> <!--Color anterior del formulario: background-color: #60c7b6-->
                 <form action="InsertIncidUser.php" method="POST" class="border rounded" style="width:600px; background: linear-gradient(172deg,rgba(96, 199, 182, 1) 0%, rgba(133, 199, 161, 1) 0%, rgba(95, 178, 222, 1) 100%);">
                 
                     <div class="p-2">
