@@ -41,7 +41,7 @@ $departments = [1 => "Informàtica", 2 => "Català", 3 => "Matemàtiques", 4 => 
                 <tr class="<?php echo $claseCss; ?>"> <!--Exita inyeccions XSS mitjançant htmlspecialchars()-->
                     <td><?php echo htmlspecialchars($INCIDENCIA["idIncidencia"])?></td>
                     <td><?php echo htmlspecialchars($INCIDENCIA["descripcio"] ?? 'Sense descripció')?></td>
-                    <td><?php echo htmlspecialchars($INCIDENCIA["data"]?? 'Falta data')?></td>
+                    <td><?php echo date('d-m-Y', strtotime($INCIDENCIA["data"]?? 'Falta data'))?></td>
                     <td><?php echo htmlspecialchars($departments[$INCIDENCIA["departament"]])?></td>
     <!--Fem un JOIN LEFT per obtenir només el nom del tècnic i mostar-ho, en comptes del seu ID-->
                     <td><?php echo htmlspecialchars($INCIDENCIA["tecnic"] ?? 'No assignat')?></td>

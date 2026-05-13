@@ -3,7 +3,7 @@
 $mysqli = include_once "../conexion.php";
 $idIncidencia = $_GET['id'] ?? $_GET['idIncidencia'] ?? null;
 if($idIncidencia){
-    $sentencia = $mysqli->prepare("SELECT * FROM ACTUACIO WHERE incidencia = ?");
+    $sentencia = $mysqli->prepare("SELECT idActuacio, descripcio, DATE(data) AS fecha, incidencia, visible, duracio FROM ACTUACIO WHERE incidencia = ?");
     $sentencia->bind_param("i", $idIncidencia);
     $sentencia->execute();
     $resultado = $sentencia->get_result();
@@ -34,7 +34,7 @@ if($idIncidencia){
                     <tr>
                         <td><?php echo htmlspecialchars($actuacio["idActuacio"]) ?></td>
                         <td><?php echo htmlspecialchars($actuacio["descripcio"])?></td>
-                        <td><?php echo htmlspecialchars($actuacio["data"]) ?></td>
+                        <td><?php echo htmlspecialchars($actuacio["fecha"]) ?></td>
                         <td><?php echo htmlspecialchars($actuacio["incidencia"]) ?></td>
                         <td><?php echo ($actuacio["visible"] == 1) ? 'Públic' : 'Privat'; ?></td>
                         <td><?php echo htmlspecialchars($actuacio["duracio"] ?? 'No assignat')?></td>

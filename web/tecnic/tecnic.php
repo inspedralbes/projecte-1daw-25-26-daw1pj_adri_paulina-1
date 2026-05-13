@@ -11,7 +11,7 @@ $return -> free(); // liberamos memoria
 $incid_tecnic = [];
 if (isset($_GET["id"])) {
     $id_tecnic = $_GET["id"];
-    $stmt = $misqli -> prepare("SELECT * FROM INCIDENCIA WHERE tecnic = ?");
+    $stmt = $misqli -> prepare("SELECT idIncidencia, descripcio, DATE(data) AS fecha, departament, tecnic, dataFinalitzacio, tipo, prioritat FROM INCIDENCIA WHERE tecnic = ?");
     
     $stmt -> bind_param("i", $id_tecnic);
     $stmt -> execute();
@@ -62,7 +62,7 @@ if (isset($_GET["id"])) {
                     <tr>
                         <td><?php echo htmlspecialchars($incidencia['idIncidencia']); ?></td>
                         <td><?php echo htmlspecialchars($incidencia['descripcio']); ?></td>
-                        <td><?php echo htmlspecialchars($incidencia['data']); ?></td>
+                        <td><?php echo htmlspecialchars($incidencia['fecha']); ?></td>
                         <td><?php echo htmlspecialchars($incidencia['dataFinalitzacio'] ?? 'No finalitzada'); ?></td>
                         <td><?php echo htmlspecialchars($incidencia['tipo']); ?></td>
                         <td><?php echo htmlspecialchars($incidencia['prioritat']); ?></td>

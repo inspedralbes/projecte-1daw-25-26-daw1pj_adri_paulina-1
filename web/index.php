@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/css/responsive.css">
 </head>
 <!-- body sense margin, padding i ocupa tot el ample i altura de la pantalla per evitar espais en blanc-->
-<body style="margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden;">
+<body style="margin: 0; padding: 0; width: 100%; height: 100%;">
     <div id="intro" class="bg-image vh-100 shadow-1-strong">
         <video style="width: 100vw;" playsinline autoplay muted loop>
             <source src="https://mdbootstrap.com/img/video/Lines.mp4" type="video/mp4" />
@@ -30,7 +30,6 @@
             </div>
         </div>
     </div>
+
+    <?php include_once "footer.php";?>
 </body>
-
-
-<?php include_once "footer.php";?>

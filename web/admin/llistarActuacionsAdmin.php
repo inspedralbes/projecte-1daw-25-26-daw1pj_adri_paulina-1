@@ -18,7 +18,7 @@ if($id_tecnic){
     <div class="container">
             <table class="table">
             <thead>
-                <legend>Llista d'actuacions completa</legend>
+                <legend>Llista de totes les actuacions</legend>
                 <tr>
                     <th>ID</th>
                     <th>Descripcio</th>
@@ -34,7 +34,8 @@ if($id_tecnic){
                     <tr>
                         <td><?php echo htmlspecialchars($actuacio["idActuacio"] ?? 'Error: No té ID') ?></td>
                         <td><?php echo htmlspecialchars($actuacio["descripcio"])?></td>
-                        <td><?php echo htmlspecialchars($actuacio["data"]) ?></td>
+                    <!-- Camviar l'output de la data -->
+                        <td><?php echo date('d-m-Y', strtotime($actuacio["data"])) ?></td>
                         <td><?php echo htmlspecialchars($actuacio["incidencia"]) ?></td>
                         <td><?php echo ($actuacio["visible"] == 1) ? 'Públic' : 'Privat'; ?></td>
                         <td><?php echo htmlspecialchars($actuacio["duracio"] ?? 'No assignat')?></td>

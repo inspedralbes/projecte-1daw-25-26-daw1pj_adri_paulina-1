@@ -39,8 +39,8 @@
     <button class="btn btn-success btn-index">DESA</button>
 
 <div>
-    <a href="../index.php" class="btn rounded text-white btn-index" style="background-color:#278DE6">INICI</a>
-    <a href="listIncidAdmin.php" class="btn rounded text-white btn-index" style="background-color:#278DE6">TORNAR</a>
+    <a href="../index.php" class="btn btn-primary rounded text-white btn-index">INICI</a>
+    <a href="listIncidAdmin.php" class="btn btn-primary rounded text-white btn-index">TORNAR</a>
 </div>
 
 </form>
