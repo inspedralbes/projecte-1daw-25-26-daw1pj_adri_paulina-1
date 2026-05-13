@@ -6,7 +6,6 @@
             <a target="_blank" class="text-white">
                 1 DAW 25-26. Grup2 : Adri i Paulina
             </a>
-
         </div>
 </footer>
 </body>
