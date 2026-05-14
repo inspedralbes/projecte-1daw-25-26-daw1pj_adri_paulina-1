@@ -1,9 +1,9 @@
 <?php
 //Són els paràmetres de connexió a la BD
-$host = "db"; /* db és el nom del servei en DOcker*/
-$usuario = "user";
-$contrasenia = "123456";
-$base_de_datos = "incidencies";
+$host = "db"; /* db és el nom del servei en DOcker A produccio = localhost*/
+$usuario = "user"; /*A produccio = a25paubarlim_usuari_inc*/
+$contrasenia = "123456"; /*A produccio = InsPedralbes2025*/
+$base_de_datos = "incidencies"; /*A produccio = a25paubarlim_incidencies*/
 
 /* CReació de la connexió utilitzant MySQLi */
 $mysqli = new mysqli($host, $usuario, $contrasenia, $base_de_datos);

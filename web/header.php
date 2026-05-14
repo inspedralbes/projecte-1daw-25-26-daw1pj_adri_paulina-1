@@ -1,6 +1,6 @@
 <!-- Només la página activa se li aplica el active -->
 <?php $pagActual = basename($_SERVER['PHP_SELF']); ?>
-
+<?php include_once 'mongo.php'; ?>
 <!DOCTYPE html>
 <html lang="es">
 
