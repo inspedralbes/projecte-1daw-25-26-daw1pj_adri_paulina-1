@@ -12,7 +12,7 @@
             
             <div class="col-md-6 text-center" > <!-- md: medium -->
                 <h1 class="fw-bold text-center mb-5" style="margin-top: 30px">Afegir actuació</h1>
-                <form id="formActuacio" action="insertActuacio.php" method="POST" class="border border-success rounded" style="max-width:600px; background: linear-gradient(135deg, #cea54d, #fff170);">
+                <form id="formActuacio" action="insertActuacio.php" method="POST" class="border border-success rounded" style="max-width:600px; background: linear-gradient(135deg, #ffcc80, #ff924a);">
                     <div class="p-2">
                         <label class="fs-4 mt-3" for="visible">Visibilitat</label> <br>
                         <select name="visible" id="visible" class="form-select w-50 mx-auto">
@@ -22,8 +22,8 @@
                         <label class="fs-4 mt-2" for="temps">Temps dedicat (minuts)</label> <br>
                         <input type="text" name="duracio" id="temps" class="form-control w-50 mx-auto" placeholder="Nombre de minuts..."><br>
                         <label class="fs-4 mt-2" for="descripcion">Descripció</label> <br>
-                        <textarea name="descripcio" class="form-control w-75 mx-auto" id="descripcion" placeholder="Descriu l'actuació..." cols="40" rows="10"></textarea>
-                        <div class="invalid-feedback bg-white p-1 rounded mt-1">
+                        <textarea name="descripcio" class="form-control w-75 mx-auto" id="descripcion" placeholder="Descriu l'actuació..." cols="40" rows="10" aria-describedby="error-descripcion"></textarea>
+                        <div id="error-descripcion" class="invalid-feedback bg-white p-1 rounded mt-1">
                         La descripció és obligatòria (mínim 10 caràcters).
                         </div>
                         <input type="hidden" name="idIncidencia" value="<?php echo $_GET['id']; ?>">                        
@@ -43,7 +43,10 @@
 
             if (descField.value.trim().length < 10) {
                 descField.classList.add('is-invalid');
+                descField.setAttribute('aria-invalid', 'true');
                 formValido = false;
+            } else {
+                descField.removeAttribute('aria-invalid'); 
             }
 
             if (!formValido) {

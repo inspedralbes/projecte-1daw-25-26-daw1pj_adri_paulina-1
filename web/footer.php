@@ -3,7 +3,7 @@
         <div> <!-- Fixed bottom: fixa la posició al bottom del viewport -->
             <a class="text-white" href="https://sites.google.com/inspedralbes.cat/prjdam1-daw1-2025-26/enunciat">Projecte GI3P</a>
             &nbsp;| &nbsp;
-            <a target="_blank" class="text-white">
+            <a class="text-white">
                 1 DAW 25-26. Grup2 : Adri i Paulina
             </a>
         </div>

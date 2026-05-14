@@ -10,9 +10,9 @@ $resultado -> free();
         <h2>Llistat de Tècnics:</h2>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Actuacions</th>
+                <th scope="col">Id</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Actuacions</th>
             </tr>
         </thead>
         <tbody>

@@ -17,7 +17,7 @@
                 <div class="p-2">
                     <label class="fs-3 mt-4" for="descripcion">Descripció</label> <br>
                     <textarea name="descripcion" class="form-control w-75 mx-auto" id="descripcion" placeholder="Descriu la incidència ..." cols="40" rows="10"></textarea>
-                    <div class="invalid-feedback bg-white p-1 rounded mt-1">
+                    <div id="error-descripcion" class="invalid-feedback bg-white p-1 rounded mt-1">
                         La descripció és obligatòria (mínim 10 caràcters).
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                         <option value="3">Matemàtiques</option>
                         <option value="4">Secretaria</option>
                     </select>
-                    <div class="invalid-feedback bg-white p-1 rounded mt-1">
+                    <div id="error-descripcion" class="invalid-feedback bg-white p-1 rounded mt-1">
                         Has de seleccionar un departament vàlid.
                     </div>
                 </div>
@@ -51,13 +51,20 @@
 
             if (descField.value.trim().length < 10) {
                 descField.classList.add('is-invalid');
+                descField.setAttribute('aria-invalid', 'true');
                 formValido = false;
+            } else {
+                descField.removeAttribute('aria-invalid'); 
             }
 
             if (deptField.value === "") {
                 deptField.classList.add('is-invalid');
+                deptField.setAttribute('aria-invalid', 'true');
                 formValido = false;
+            } else {
+                deptField.removeAttribute('aria-invalid'); 
             }
+
             if (!formValido) {
                 event.preventDefault();
                 event.stopPropagation();

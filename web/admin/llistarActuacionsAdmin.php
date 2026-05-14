@@ -19,12 +19,12 @@ if($id_tecnic){
         <thead class="thead-dark">
             <legend class="mt-5">Llista de totes les actuacions</legend>
             <tr>
-                <th class="text-white">ID</th>
-                <th class="text-white">Descripcio</th>
-                <th class="text-white">Data Creació</th>
-                <th class="text-white">Incidència</th>
-                <th class="text-white">Visibilitat</th>
-                <th class="text-white">Duració (min)</th>
+                <th class="text-white" scope="col">ID</th>
+                <th class="text-white" scope="col">Descripcio</th>
+                <th class="text-white" scope="col">Data Creació</th>
+                <th class="text-white" scope="col">Incidència</th>
+                <th class="text-white" scope="col">Visibilitat</th>
+                <th class="text-white" scope="col">Duració (min)</th>
             </tr>
         </thead>
             <tbody>

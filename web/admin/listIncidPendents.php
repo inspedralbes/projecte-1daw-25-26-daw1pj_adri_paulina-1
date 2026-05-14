@@ -16,14 +16,14 @@ $departments = [1 => "Informàtica", 2 => "Català", 3 => "Matemàtiques", 4 => 
         <thead class="thead-dark">
             <legend class="mt-5">Llista de totes les incidències:</legend>
             <tr>
-                <th class="text-white">ID</th>
-                <th class="text-white">Descripcio</th>
-                <th class="text-white">Data Creació</th>
-                <th class="text-white">Departament</th>
-                <th class="text-white">Tècnic</th>
-                <th class="text-white">Data Finalitzacio</th>
-                <th class="text-white">Tipus</th>
-                <th class="text-white">Prioritat</th>
+                <th class="text-white" scope="col">ID</th>
+                <th class="text-white" scope="col">Descripcio</th>
+                <th class="text-white" scope="col">Data Creació</th>
+                <th class="text-white" scope="col">Departament</th>
+                <th class="text-white" scope="col">Tècnic</th>
+                <th class="text-white" scope="col">Data Finalitzacio</th>
+                <th class="text-white" scope="col">Tipus</th>
+                <th class="text-white" scope="col">Prioritat</th>
                 <th></th>
             </tr>
         </thead>

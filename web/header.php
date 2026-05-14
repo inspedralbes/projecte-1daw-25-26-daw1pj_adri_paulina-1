@@ -2,7 +2,7 @@
 <?php $pagActual = basename($_SERVER['PHP_SELF']); ?>
 <?php include_once 'mongo.php'; ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ca">
 
 <head>
     <meta charset="UTF-8">

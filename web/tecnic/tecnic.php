@@ -63,12 +63,12 @@ if (isset($_GET['action']) && $_GET['action'] == 'tancar' && isset($_GET['id_inc
         <table border="1" cellpadding="10" class="table table-hover table-responsive">
             <thead class="thead-dark">
                 <tr>
-                    <th class="text-white">ID</th>
-                    <th class="text-white">Descripció</th>
-                    <th class="text-white">Data</th>
-                    <th class="text-white">Data de finalització</th>
-                    <th class="text-white">Tipus</th>
-                    <th class="text-white">Prioritat</th>
+                    <th class="text-white" scope="col">ID</th>
+                    <th class="text-white" scope="col">Descripció</th>
+                    <th class="text-white" scope="col">Data</th>
+                    <th class="text-white" scope="col">Data de finalització</th>
+                    <th class="text-white" scope="col">Tipus</th>
+                    <th class="text-white" scope="col">Prioritat</th>
                     <th></th>
                     <th></th>
                     <th></th>

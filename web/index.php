@@ -11,13 +11,15 @@
     <link rel="stylesheet" href="/css/responsive.css">
 </head>
 <!-- body sense margin, padding i ocupa tot el ample i altura de la pantalla per evitar espais en blanc-->
+
+
 <body style="margin: 0; padding: 0; width: 100%; height: 100%;">
 <!-- Div con las mismas dimensiones para que no sobresalga el body. Utilitzem dimensions de pantalla y no %. No necesita overflow: hidden; -->
     <div style="position: relative; width: 100vw; height: 100vh;">
-        <video playsinline autoplay muted loop>
+        <video playsinline autoplay muted loop id="background-video">
             <source src="https://mdbootstrap.com/img/video/Lines.mp4" type="video/mp4" />
+            
         </video>
-        
         <div class="position-absolute top-0 start-0 w-100 h-100 mask-alpha"></div>
         <!--Cerramos div para centar el contenido por encima de la máscara-->
         
@@ -39,12 +41,30 @@
                         <a class="btn btn-outline-light btn-lg m-2 btn-index" href="user/CrearIncidUser.php">PROFESSOR</a>
                         <a class="btn btn-outline-light btn-lg m-2 btn-index" href="tecnic/tecnic.php">TÈCNIC</a>
                         <a class="btn btn-outline-light btn-lg m-2 btn-index" href="admin/admin.php">ADMINISTRADOR</a>
+                        <div style="position: fixed; top: 20px; right: 20px; z-index: 999;">
+                            <button id="btnPausa" class="btn btn-sm btn-outline-light shadow-sm" aria-label="Pausar vídeo de fons">
+                                Pausar Vídeo
+                            </button>
+                        </div>
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
+    <script>
+        const video = document.getElementById('background-video');
+        const btn = document.getElementById('btnPausa');
 
+        btn.addEventListener('click', function() {
+            if (video.paused) {
+                video.play();
+                btn.textContent = "Pausar Vídeo";
+            } else {
+                video.pause();
+                btn.textContent = "Reproduir Vídeo";
+            }
+        });
+    </script>
     <?php include_once "footer.php";?>
 </body>
