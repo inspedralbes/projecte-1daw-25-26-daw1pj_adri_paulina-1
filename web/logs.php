@@ -1,6 +1,5 @@
 <?php
-require 'vendor/autoload.php';
-include_once 'header.php';
+include_once 'header.php'; #require 'vendor/autoload.php'; ja se carga en el header (evitar duplicados)
 // Connexió a MongoDB
 $client = new MongoDB\Client("mongodb://admin:pass@mongo:27017");
 $collection = $client->logs->logs;
@@ -32,6 +31,7 @@ $dadesGrafica = array_values($conteoPerData);
 
 ?>
 
+
 <div class="container mt-5">
     <div class="row">
         <div class="col-12 text-center mb-4">
@@ -41,88 +41,88 @@ $dadesGrafica = array_values($conteoPerData);
     </div>
 </div>
 
-    <!-- Targeta del Total General -->
-    <div class="row mb-4">
-        <div class="col-md-12">
-            <div class="card border-primary text-center">
-                <div class="card-body">
-                    <h3 class="card-title text-secondary">Total de Registres</h3>
-                    <p class="display-2 fw-bold text-primary"><?= $totalGeneral ?></p>
-                    <p class="text-muted">Interaccions totals detectades pel sistema</p>
-                </div>
+<!-- Informacio general en una targeta -->
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card border-primary text-center">
+            <div class="card-body">
+                <h3 class="card-title text-secondary">Total de Registres</h3>
+                <p class="display-2 fw-bold text-primary"><?= $totalGeneral ?></p>
+                <p class="text-muted">Interaccions totals detectades pel sistema</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Gràfica d'activitat (del moment) -->
+    <div class="col-lg-7 mb-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Activitat Temporal (Avui)</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="grafica"></canvas>
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <!-- Gràfica d'activitat temporal -->
-        <div class="col-lg-7 mb-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Activitat Temporal (Avui)</h5>
-                </div>
-                <div class="card-body">
-                    <canvas id="grafica"></canvas>
-                </div>
+    <!-- Recollida per pàgines -->
+    <div class="col-lg-5 mb-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-header bg-secondary text-white">
+                <h5 class="mb-0">Rànquing de Pàgines</h5>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>URL / Pàgina</th>
+                            <th class="text-center">Visites</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($conteoPerPagina as $url => $visites): ?>
+                        <tr>
+                            <td><small class="text-info"><?= htmlspecialchars($url) ?></small></td>
+                            <td class="text-center fw-bold text-primary"><?= $visites ?></td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
         </div>
-
-        <!-- Recollida per pàgines -->
-        <div class="col-lg-5 mb-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-header bg-secondary text-white">
-                    <h5 class="mb-0">Rànquing de Pàgines</h5>
-                </div>
-                <div class="card-body p-0">
-                    <table class="table table-hover mb-0">
-                        <thead class="table-light">
-                            <tr>
-                                <th>URL / Pàgina</th>
-                                <th class="text-center">Visites</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($conteoPerPagina as $url => $visites): ?>
-                            <tr>
-                                <td><small class="text-info"><?= htmlspecialchars($url) ?></small></td>
-                                <td class="text-center fw-bold text-primary"><?= $visites ?></td>
-                            </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+    </div>
         
-        <!--Taula -->
-        <div class="card mb-5">
-            <div class="card-header bg-primary text-white">
-                <h6 class="mb-0">Últim 10 accessos</h6>
-                <div class="table-responsive table-responsive">
-                    <thead class="thead-dark">
+    <!--Taula -->
+    <div class="card mb-5">
+        <div class="card-header bg-primary text-white">
+            <h6 class="mb-0">Últim 10 accessos</h6>
+        </div>
+        <div class="table table-responsive">
+            <table>
+                <thead class="thead-dark table-hover">
                     <tr>
                         <th class="text-white">Dia + Hora</th>
                         <th class="text-white">Mètode</th>
                         <th class="text-white">URL</th>
                         <th class="text-white">IP</th>
                     </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($logs as $log): ?>
-                            <?php
-                                $DataHora = $log[datetime]?? '';
-                                $metode = $log[method]?? '';
-                                $URL = $pagina_actual?? '';
-                                $IP = $ip?? '';
-                            ?>
-                    </tbody>
-                </div>
-            </div>
+                </thead>
+                <tbody>
+                    <?php foreach ($logs as $log): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($log['datetime'] ?? '') ?></td>
+                            <td><?= htmlspecialchars($log['method'] ?? '') ?></td>
+                            <td><?= htmlspecialchars($log['pagina_actual'] ?? '') ?></td>
+                            <td><?= htmlspecialchars($log['ip'] ?? '') ?></td>      
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
-
-
 
 <!-- Scripts per a la gràfica -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

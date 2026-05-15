@@ -23,7 +23,7 @@ $collection->insertOne([
     'datetime' => date("d-m-Y H:i:s")
 ]);
 # Per guardar el 10 últims logs (la variable la utilitzem a un altre doc.)
-$logs = $collection ->find([],
+$logs = $collection->find([],
 [
     'sort' => ['_id' => -1],
     'limit' => 10
