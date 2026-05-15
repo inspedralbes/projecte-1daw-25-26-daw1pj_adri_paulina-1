@@ -34,12 +34,12 @@
                 <!--Pie chart-->
                 <div class="card border-primary text-center mb-4">
                     <h4>Pie Chart</h4>
-                    <canvas id="pieChart"></canvas>
+                    <canvas id="pieChart" style="max-height: 200px;"></canvas>
                 </div>
 
                 <div class="card border-primary text-center">
-                    <h4>Stacked Bar Chart</h4>
-                    <canvas id="barChart"></canvas>
+                    <h4>Consum per departament</h4>
+                    <canvas id="barChart" style="max-height: 200px;"></canvas>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@ $totalIncid = $mysqli -> query("SELECT COUNT(*) AS total FROM INCIDENCIA") -> fe
 $incidObertes = $mysqli -> query("SELECT COUNT(*) AS obertes FROM INCIDENCIA WHERE dataFinalitzacio IS NULL") -> fetch_assoc()['obertes'];
 $incidTancades = $mysqli -> query("SELECT COUNT(*) AS tancades FROM INCIDENCIA WHERE dataFinalitzacio IS NOT NULL") -> fetch_assoc()['tancades'];
 # departaments:
-$depts = $mysqli -> query("SELECT d.nom, d.idDepartament COUNT(i.idIncidencia) AS totalDept FROM DEPARTAMENT d LEFT JOIN INCIDENCIA i ON d.idTecnic = d.idTecnic GROUP BY d.idDepartament, d.nom");
+$depts = $mysqli -> query("SELECT d.nom, d.idDepartament, COUNT(i.idIncidencia) AS totalDept FROM DEPARTAMENT d LEFT JOIN INCIDENCIA i ON d.idDepartament = i.departament GROUP BY d.idDepartament, d.nom");
 # variables para el bucle
 $labelsDept = [];
 $dataDept = [];
@@ -76,13 +76,15 @@ window.addEventListener('load', function(){
             label: 'Incidències',
             /* afegir (int) en cas de que sigui NULL */
             data: [<?= (int)$totalIncid?>, <?= (int)$incidObertes?>, <?= (int)$incidTancades?>],
-            backgroundColor: ['#41cab3',
-                            '#41ca53',
-                            '#f3128e'],
+            backgroundColor: [
+                '#325D88',
+                '#93C54B',
+                '#D9534F'
+            ],
         }]
     };
     new Chart (document.getElementById('pieChart'),{
-        type: 'pie',
+        type: 'doughnut',
         data: pieData
     });
 });
@@ -99,7 +101,11 @@ window.addEventListener('load', function() {
                 datasets: [{
                     label: 'Incidències per departament',
                     data: <?= json_encode($dataDept) ?>,
-                    backgroundColor: '#278DE6',
+                    backgroundColor: ['#325D88',
+                            '#4F81BD',
+                            '#6FA3D9',
+                            '#1F3B57',
+                        ],
                 }]
             }
         });

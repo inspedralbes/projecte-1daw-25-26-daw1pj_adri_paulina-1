@@ -33,19 +33,13 @@ arsort($conteoPerPagina); // Pàgines més vistes primer
 
 $labelsGrafica = array_keys($conteoPerData);
 $dadesGrafica = array_values($conteoPerData);
+
+$DataHora = ;
+$metode = ;
+$URL = ;
+$IP = ;
+
 ?>
-
-<div class="container mt-3">
-    <div class="row">
-        <div class="card border-primary text-center">
-            <div class="card-body">
-                <h3>Gràfiques Incidències</h3>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 
 <div class="container mt-5">
     <div class="row">
@@ -77,7 +71,7 @@ $dadesGrafica = array_values($conteoPerData);
                     <h5 class="mb-0">Activitat Temporal (Avui)</h5>
                 </div>
                 <div class="card-body">
-                    <canvas id="graficaTemporal"></canvas>
+                    <canvas id="grafica"></canvas>
                 </div>
             </div>
         </div>
@@ -108,13 +102,35 @@ $dadesGrafica = array_values($conteoPerData);
                 </div>
             </div>
         </div>
+        
+        <!--Taula -->
+        <div class="card mb-5">
+            <div class="card-header bg-primary text-white">
+                <h6 class="mb-0">Últim 10 accessos</h6>
+                <div class="table-responsive table-responsive">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th class="text-white">Dia + Hora</th>
+                        <th class="text-white">Mètode</th>
+                        <th class="text-white">URL</th>
+                        <th class="text-white">IP</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($conteo) ?>
+                    </tbody>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+
 
 <!-- Scripts per a la gràfica -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    const ctx = document.getElementById('graficaTemporal').getContext('2d');
+    const ctx = document.getElementById('grafica').getContext('2d');
     new Chart(ctx, {
         type: 'line',
         data: {

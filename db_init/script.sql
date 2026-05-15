@@ -48,22 +48,3 @@ CREATE TABLE ACTUACIO(
     ('Alvaro Perez'), 
     ('Gerard Torrents'),
     ('Rafa Cuestas');
-
-    -- 3. Insertar Incidencias
-    -- Incidencia 1: Cerrada (con dataFinalitzacio)
-    INSERT INTO INCIDENCIA (descripcio, data, departament, tecnic, dataFinalitzacio, tipo, prioritat) VALUES 
-    ('L''ordinador no encén després de la tempesta', '2024-05-10 09:00:00', 2, 1, '2024-05-11', 'Hardware', 'Alta');
-
-    -- Incidencia 2: Abierta (dataFinalitzacio es NULL)
-    INSERT INTO INCIDENCIA (descripcio, data, departament, tecnic, dataFinalitzacio, tipo, prioritat) VALUES 
-    ('No funciona el correu electrònic a l''Outlook', '2024-05-12 10:30:00', 1, 2, NULL, 'Software', 'Mitja');
-
-    -- Incidencia 3: Problema de red
-    INSERT INTO INCIDENCIA (descripcio, data, departament, tecnic, dataFinalitzacio, tipo, prioritat) VALUES 
-    ('La connexió va molt lenta a la planta 3', '2024-05-12 11:15:00', 4, 3, NULL, 'Internet', 'Baixa');
-
-    -- 4. Insertar Actuaciones (historial de qué se ha hecho)
-    INSERT INTO ACTUACIO (descripcio, data, incidencia, visible) VALUES 
-    ('He revisat la font d''alimentació i estava cremada. S''ha de canviar.', '2024-05-10 12:00:00', 1, 1),
-    ('S''ha instal·lat la nova font i ja funciona correctament.', '2024-05-11 08:30:00', 1, 1),
-    ('He intentat reconfigurar el perfil d''usuari però segueix donant error.', '2024-05-12 13:00:00', 2, 0);
