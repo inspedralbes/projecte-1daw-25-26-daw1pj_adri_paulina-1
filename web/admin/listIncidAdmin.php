@@ -1,6 +1,7 @@
-<?php include_once "../header.php";?>
-
 <?php
+$_SESSION['role'] = 'admin';
+include_once "../header.php";
+
 $mysqli = include_once "../conexion.php";
 $resultado = $mysqli->query("SELECT i.*, t.nom AS tecnic 
     FROM INCIDENCIA i LEFT JOIN TECNIC t ON i.tecnic = t.idTecnic 

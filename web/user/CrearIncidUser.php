@@ -1,4 +1,7 @@
-<?php include_once "../header.php"; ?>
+<?php
+include_once "../header.php";
+$_SESSION['role'] = 'user'; // Per indicar el rol del usuari
+?>
 
 <div class="container mt-5"> <!--con Margin Top: 5-->
     <div class="row justify-content-center align-items-center g-4"> <!-- -->

@@ -1,4 +1,5 @@
 <?php include_once "../header.php";
+$_SESSION['role'] = 'admin';
 
 $mysqli = include_once "../conexion.php";
 $id_tecnic = $_GET['id'] ?? null;

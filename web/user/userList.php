@@ -1,4 +1,6 @@
 <?php include_once "../header.php";
+$_SESSION['role'] = 'user';
+
 # Incloem capçelera i la connexio a la BD
 $mysqli = include_once "../conexion.php";
 

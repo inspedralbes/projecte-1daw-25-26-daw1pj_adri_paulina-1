@@ -1,5 +1,6 @@
-<?php 
-    include_once "../header.php";
+<?php
+$_SESSION['role'] = 'admin';
+include_once "../header.php";
 
     $mysqli = include_once "../conexion.php";
     $id = $_GET["id"];

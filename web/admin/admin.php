@@ -1,9 +1,10 @@
-<?php require_once "../header.php"; ?>
-
-
+<?php
+$_SESSION['role'] = 'admin';
+require_once "../header.php";
+?>
 
 <!--Contenidor de tot el contingut -->
-<div class="container mt-5">
+<div class="container mt-3">
     <!-- Div amb 2 columnes centrades-->
     <div class="row w-100 align-items-center text-center">
         <!-- contingut esquerra -->

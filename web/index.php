@@ -1,4 +1,6 @@
-<?php include 'mongo.php'; ?>
+<?php
+include 'mongo.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>

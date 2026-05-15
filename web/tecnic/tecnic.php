@@ -1,4 +1,6 @@
 <?php
+$_SESSION['role'] = 'tecnic'; // to set user's role
+
 require_once "../header.php";
 $mysqli = include_once "../conexion.php";
 # creamos una variable que haga un SELECT a la BD mediante conexion.php

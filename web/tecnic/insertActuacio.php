@@ -1,5 +1,6 @@
-
 <?php
+$_SESSION['role'] = 'tecnic';
+
     include_once "../header.php"; 
     include_once "../conexion.php"; // $mysqli está disponible amn "con.php"
 
