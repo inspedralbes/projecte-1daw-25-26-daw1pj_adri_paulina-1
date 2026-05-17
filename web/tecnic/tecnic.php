@@ -72,9 +72,9 @@ if (isset($_GET['action']) && $_GET['action'] == 'tancar' && isset($_GET['id_inc
                         <th class="text-white">Data de finalització</th>
                         <th class="text-white">Tipus</th>
                         <th class="text-white">Prioritat</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th class="text-center"><i class="bi bi-lock-fill" style="font-size: 18px; color: white;"></i></th>
+                        <th class="text-center"><i class="bi bi-card-checklist" style="font-size: 18px; color: white;"></th>
+                        <th class="text-center"><i class="bi bi-eraser-fill" style="font-size: 18px; color: white;"></i></th>
                     </tr>
                 </thead>
                 <?php if(count($incid_tecnic)>0): ?>

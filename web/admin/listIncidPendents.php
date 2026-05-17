@@ -13,7 +13,7 @@ $departments = [1 => "Informàtica", 2 => "Català", 3 => "Matemàtiques", 4 => 
 
 <div class="container">
     <div class="table-responsive-md">
-        <table class="table table-hover table-responsive">
+        <table class="table table-hover">
             <thead class="thead-dark">
                 <legend class="mt-5">Llista de totes les incidències:</legend>
                 <tr>
@@ -25,7 +25,7 @@ $departments = [1 => "Informàtica", 2 => "Català", 3 => "Matemàtiques", 4 => 
                     <th class="text-white">Data Finalitzacio</th>
                     <th class="text-white">Tipus</th>
                     <th class="text-white">Prioritat</th>
-                    <th></th>
+                    <th class="text-center"><i class="bi bi-pencil-square" style="font-size: 18px; color: white;"></i></th>
                 </tr>
             </thead>
             <tbody>
