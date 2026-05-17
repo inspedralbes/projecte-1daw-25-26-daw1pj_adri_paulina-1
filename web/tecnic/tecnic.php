@@ -1,4 +1,7 @@
 <?php
+$_SESSION['role'] = 'tecnic'; // to set user's role
+
+require_once "../header.php";
 $mysqli = include_once "../conexion.php";
 # creamos una variable que haga un SELECT a la BD mediante conexion.php
 $return = $mysqli->query("SELECT * FROM TECNIC");
@@ -58,24 +61,25 @@ require_once "../header.php";
     <?php endif; ?>
 </div>
 <div class="container">
-    <div class="table-responsive">
-        <?php if (isset($_GET['id'])): ?>
-            <h2>Incidències que s'ha t'han assignat:</h2>
+
+    <?php if(isset($_GET['id'])): ?>
+        <h2>Incidències que s'ha t'han assignat:</h2>
+        <div class="table-responsive">
             <table border="1" cellpadding="10" class="table table-hover">
                 <thead class="thead-dark">
                     <tr>
-                        <th class="text-white" scope="col">ID</th>
-                        <th class="text-white" scope="col">Descripció</th>
-                        <th class="text-white" scope="col">Data</th>
-                        <th class="text-white" scope="col">Data de finalització</th>
-                        <th class="text-white" scope="col">Tipus</th>
-                        <th class="text-white" scope="col">Prioritat</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th class="text-white">ID</th>
+                        <th class="text-white">Descripció</th>
+                        <th class="text-white">Data</th>
+                        <th class="text-white">Data de finalització</th>
+                        <th class="text-white">Tipus</th>
+                        <th class="text-white">Prioritat</th>
+                        <th class="text-center"><i class="bi bi-lock-fill" style="font-size: 18px; color: white;"></i></th>
+                        <th class="text-center"><i class="bi bi-card-checklist" style="font-size: 18px; color: white;"></th>
+                        <th class="text-center"><i class="bi bi-eraser-fill" style="font-size: 18px; color: white;"></i></th>
                     </tr>
                 </thead>
-                <?php if (count($incid_tecnic) > 0): ?>
+                <?php if(count($incid_tecnic)>0): ?>
                     <?php foreach ($incid_tecnic as $incidencia): ?>
                         <tr>
                             <td><?php echo htmlspecialchars($incidencia['idIncidencia']); ?></td>
@@ -84,15 +88,15 @@ require_once "../header.php";
                             <td><?php echo htmlspecialchars($incidencia['dataFinalitzacio'] ?? 'No finalitzada'); ?></td>
                             <td><?php echo htmlspecialchars($incidencia['tipo']); ?></td>
                             <td><?php echo htmlspecialchars($incidencia['prioritat']); ?></td>
-                            <td><a href="?id=<?php echo $id_tecnic; ?>&action=tancar&id_incidencia=<?php echo $incidencia['idIncidencia']; ?>"
-                                    class="btn btn-sm btn-danger" onclick="return confirm('Segur que vols tancar la incidència <?php echo $incidencia['idIncidencia']; ?>?')">
-                                    Tancar
-                                </a></td>
-                            <td><a href="llistarActuacions.php?id=<?php echo htmlspecialchars($incidencia["idIncidencia"]) ?>"
-                                    class="btn btn-sm btn-info">Llistat d'actuacions</a></td>
-                            <td><a href="actuacioTec.php?id=<?php echo htmlspecialchars($incidencia["idIncidencia"]) ?>"
-                                    class="btn btn-sm btn-danger">Afegir actuació</a></td>
-
+                            <td><a href="?id=<?php echo $id_tecnic; ?>&action=tancar&id_incidencia=<?php echo $incidencia['idIncidencia']; ?>" 
+                            class="btn btn-sm btn-danger" onclick="return confirm('Segur que vols tancar la incidència <?php echo $incidencia['idIncidencia']; ?>?')">
+                            Tancar
+                            </a></td>
+                            <td><a href="llistarActuacions.php?id=<?php echo htmlspecialchars($incidencia["idIncidencia"])?>" 
+                            class="btn btn-sm btn-info">Llistat d'actuacions</a></td>
+                            <td><a href="actuacioTec.php?id=<?php echo htmlspecialchars($incidencia["idIncidencia"])?>" 
+                            class="btn btn-sm btn-danger">Afegir actuació</a></td>
+                            
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
@@ -101,9 +105,8 @@ require_once "../header.php";
                     </tr>
                 <?php endif; ?>
             </table>
-        <?php endif; ?>
-
-    </div>
+        </div>
+    <?php endif; ?>
 
     <div class="d-flex gap-2 mt-3">
         <!--Btn para volver atrás en la misma pàgina -->

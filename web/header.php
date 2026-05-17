@@ -12,8 +12,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <link rel="icon" href="../img/logoGI3P.png">
 <!-- Afeguim un sol cop bootstrap i el favicon que aparecixerán a totes les pàgines on s'afegueixi el header -->
+<!--Per poder fer sevir icones-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 </head>
-<body>
+<body class="pb-5"><!--Afeguim padding b per a que el body de totes les págines es pugui fer scroll-->
 
 <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
   <div class="container-fluid position-relative">

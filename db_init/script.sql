@@ -15,7 +15,7 @@ CREATE TABLE TECNIC(
 CREATE TABLE INCIDENCIA(
     idIncidencia INT(11) AUTO_INCREMENT PRIMARY KEY,
     descripcio VARCHAR(2000),
-    data TIMESTAMP,
+    data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     departament INT(11),
     tecnic INT(11),
     dataFinalitzacio DATE,
@@ -48,3 +48,4 @@ CREATE TABLE ACTUACIO(
     ('Alvaro Perez'), 
     ('Gerard Torrents'),
     ('Rafa Cuestas');
+-- Manually save current data by using DEFAULT CURRENT_TIMESTAMP --
