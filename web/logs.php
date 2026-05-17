@@ -1,7 +1,9 @@
 <?php
 include_once 'header.php'; #require 'vendor/autoload.php'; ja se carga en el header (evitar duplicados)
 // Connexió a MongoDB
-$client = new MongoDB\Client("mongodb://admin:pass@mongo:27017");
+$mongoUri = "mongodb+srv://a25adrtomdie_db_user:PLT+Rf4jTW61VqCN@cluster0.ew1qzdv.mongodb.net/?appName=Cluster0";
+
+$client = new MongoDB\Client($mongoUri);
 $collection = $client->logs->logs;
 
 // Obtenir tots els registres (sense filtre)
