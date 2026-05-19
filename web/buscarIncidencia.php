@@ -54,7 +54,7 @@ $actuaciones = $res_actuaciones->fetch_all(MYSQLI_ASSOC);
                     <td><?= htmlspecialchars($incidencia['descripcio'] ?? 'Sense descripció') ?></td>
                     <td><?= date('d-m-Y', strtotime($incidencia['data'])) ?></td>
                     <td><?= htmlspecialchars($incidencia['nomDept'] ?? 'Desconegut') ?></td>
-                    <td><?= htmlspecialchars($incidencia['dataFinalitzacio'] ?? 'No Finalitzada') ?></td>
+                    <td><?= date('d-m-Y', strtotime($incidencia['dataFinalitzacio']) ?? 'No Finalitzada') ?></td>
                     <td><?= htmlspecialchars($incidencia['tipo'] ?? 'No assignat') ?></td>
                 </tr>
             </tbody>
