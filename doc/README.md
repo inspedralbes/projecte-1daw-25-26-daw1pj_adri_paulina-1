@@ -37,7 +37,6 @@ supervisen el procés.
 ```
 /
 ├── index.php           # Pàgina principal
-├── login.php           # Autenticació
 ├── logs.php            # Estadístiques
 ├── conexio.php         # Connexió a BD
 ├── user/               # Panell professor

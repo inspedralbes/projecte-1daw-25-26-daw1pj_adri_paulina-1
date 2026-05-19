@@ -8,7 +8,6 @@ El codi font i els recursos del projecte s'organitzen dins de la carpeta princip
 ```
 /
 ├── index.php                 # Pàgina d'inici, benvinguda i enrutament inicial
-├── login.php                 # Sistema d'autenticació i control de sessions d'usuari
 ├── logs.php                  # Panell analític d'estadístiques i visualització de logs de seguretat
 ├── conexio.php               # Fitxer central de configuració i connexió (MySQL i MongoDB)
 ├── mongo.php                 # Script d'auditoria automatitzada (intercepció de peticions)
