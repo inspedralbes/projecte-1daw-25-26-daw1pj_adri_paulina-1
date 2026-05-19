@@ -1,0 +1,83 @@
+services:
+  # Servidor web Apache amb PHP i suport MySQL
+  web:
+    image: ebota/daw:apache_php_mysql_mongodb
+    container_name: incidencies-web
+    ports:
+      - "8080:80"
+    volumes:
+      - ./web:/var/www/html
+    command: /bin/bash -c "composer install --no-interaction --no-plugins --no-scripts && echo WEBSERVER_________UP_________AND_______RUNNIIIIIIING && apache2-foreground"    
+
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  # Servidor de base de dades MySQL
+  db:
+    image: mysql:8.0
+    container_name: incidencies-db
+    
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: incidencies
+      MYSQL_USER: user
+      MYSQL_PASSWORD: 123456
+    volumes:
+
+      - ./db_init:/docker-entrypoint-initdb.d
+      # L'script sql es guarda en la carpeta db_init
+    networks:
+      - app-network
+
+  # Adminer per gestionar la base de dades
+  adminer:
+    image: adminer
+    container_name: incidencies-adminer
+    ports:
+      - "8081:8080"
+    depends_on:
+      - db
+    networks:
+      - app-network
+# BBDD no sql,
+  mongo:
+    image: mongo:latest
+    networks:
+      - app-network
+    volumes:
+      #Named volume, no cal posar res al .gitignore
+      #perque no es crea una carpeta al host sinó que es crea un volum a docker
+      # i es pot veure amb docker volume ls
+      # i es pot eliminar amb docker volume rm nom_del_volum      
+      - mongodb_data:/data/db
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: pass
+      
+
+  mongo-express:
+    image: mongo-express
+    networks:
+      - app-network
+    ports:
+      - "8082:8081"
+    environment:
+      #Per entrar a la web de mongo-express, les credencials són
+      #admin
+      #pass
+      ME_CONFIG_MONGODB_URL: mongodb://admin:pass@mongo:27017/
+    depends_on:
+      - mongo
+
+
+volumes:
+  mysql-data:
+  mongodb_data:
+
+networks:
+  app-network:
+    driver: bridge

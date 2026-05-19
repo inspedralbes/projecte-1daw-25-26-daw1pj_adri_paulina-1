@@ -1,0 +1,139 @@
+/*estil botó*/
+.btn-index:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+    color: rgba(0, 0, 0, 0.541) !important; /* evitar conflictos con bootstrap*/
+}
+video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* To resize the video to cover the entire container */
+    z-index: 0;
+}
+/*estil video/animació: cambiar video en absolute*/
+.mask-alpha{
+    background: linear-gradient(
+    45deg,
+    rgba(11, 169, 140, 0.7),
+    rgba(74, 29, 145, 0.7) 100%);
+    display: flex; /*Para poder centrar los items*/
+    align-items: center;
+    z-index: 1; /*Para que esté por encima del video*/
+}
+
+
+
+/*--- RESPONSIVE: - Per a mòvils (576px) i tablets (768px) (ordenadors es per defecte) ---*/
+/* -- Header --*/
+@media (max-width: 768px) {
+    header .row {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 8px;
+    }
+    /*columnes ocupen el 100% de l'ample*/
+    header .col-4 {
+        width: 100%;
+    }
+    /*Reducir tamany logo*/
+    header img {
+        max-height: 55px;
+    }
+    /*Reduir tamany dels txts de la capçalera*/
+    header h2, header h3 {
+        font-size: 1.2rem;
+    }
+}
+/*-- Footer --*/
+@media (max-width: 576px) {
+    footer.fixed-bottom {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    }
+}
+/*-- Index (Canviar tamany dels botons (ampliarlos) --*/
+@media (max-width: 576px) {
+    .mx-auto.mt-5 {
+        width: 90% !important;
+    }
+    .mx-auto.mt-5 img {
+        max-width: 100px;
+    }
+}
+/*-- Tablas --*/
+@media (max-width: 768px) {
+    .table-responsive {
+        overflow-x: auto; /* scroll Horitzontal si no hi cap*/
+    }
+    /*Reduir: padding, fs, per a les cel·les (per a que capigue tot)*/
+    .table td, .table th {
+        padding: 6px 8px;
+        font-size: 0.85rem;
+        white-space: nowrap; /* el text no es trenca en diverses línies */
+    }
+}
+/*--Formulari User: CrearIncidencia.php --*/
+@media (max-width: 768px) {
+    .col-md-5 img[alt="img Incidencies"] {
+        display: none;
+        /*Oculta la imatge per donar espai al formulari*/
+    }
+    /* per redistribuir el botons (que estan sota la img)*/
+    .col-md-5 .d-grid {
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 16px !important;
+    }
+    /* el formulari ocupa tot l'ample*/
+    .col-md-6 {
+        width: 100%;
+        padding: 0 10px; /* el padding lateral evita tocar els marges del mòvil*/
+    } /* "rompemos" el tamaño fijo del form */
+    form[action="InsertIncidUser.php"] {
+        width: 100% !important;
+    }
+    /* Evitar que el textarea sobresurti */
+    form[action="InsertIncidUser.php"] textarea {
+        width: 100% !important;
+        box-sizing: border-box; /* Incluye el padding en el ancho total */
+    }
+}
+@media (max-width: 576px) {
+    .col-md-6 h1{
+        font-size: 1.5rem;
+        margin-top: 20px !important;
+    }
+}
+/* Hacer formulario block (select + input son inline por defecto), que se agrupen verticalmente*/
+@media (max-width: 576px) {
+    /*definir tamaños a los labels*/
+    form[action="UpdateAdmin.php"] label,
+    form[action="UpdateAdmin.php"] select,
+    form[action="UpdateAdmin.php"] input[type="number"] {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+/*--Margen parte inferior pantalla. Añadir padding al finla del body para que no se tape el contenido--*/
+body {
+    padding-bottom: 60px;
+}
+@media (max-width: 576px) {
+    body {
+        padding-bottom: 50px; /* Aumentar el padding para dispositivos móviles */
+    }
+}
+/*--Botones--*/
+@media (max-width: 576px) {
+    .btn-index {
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+    }
+}
